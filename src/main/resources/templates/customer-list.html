@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            border: 1px solid black;
+        }
+        .row>td{
+            border: 1px solid black;
+        }
+
+        .head {
+            font-weight: bold;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Customer Site</h1>
+<hr/>
+
+<h3><a href="/cust/add">Add Customer</a></h3>
+
+<table>
+    <tr class="head row">
+        <td>ID</td>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Email</td>
+        <td>Action</td>
+    </tr>
+    <tr class="row" th:each="customer : ${customers}">
+        <td th:text="${customer.id}">Name</td>
+        <td th:text="${customer.firstName}">First Name</td>
+        <td th:text="${customer.lastName}">Last Name</td>
+        <td th:text="${customer.email}">Email</td>
+        <td><a th:href="'/cust/update?id='+${customer.id}">Update</a></td>
+    </tr>
+</table>
+
+</body>
+</html>

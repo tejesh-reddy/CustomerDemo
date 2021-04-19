@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .error{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+<h1>Add new Customer</h1>
+<hr/>
+
+
+<p>
+  <form method="POST" th:object="${customer}">
+  <div>
+    First Name: <input type="text" placeholder="John" th:field="*{firstName}">
+    <span th:if="${#fields.hasErrors('firstName')}"
+    th:errors="*{firstName}"
+    class="error"></span>
+  </div>
+  <div>
+    Last Name: <input type="text" placeholder="Doe" th:field="*{lastName}">
+    <span th:if="${#fields.hasErrors('lastName')}"
+          th:errors="*{lastName}"
+          class="error"></span>
+  </div>
+  <div>
+    Email: <input type="text" placeholder="john.doe@xyz.com" th:field="*{email}">
+    <span th:if="${#fields.hasErrors('email')}"
+          th:errors="*{email}"
+          class="error"></span>
+  </div>
+  <input type="submit" value="Add customer">
+</form>
+</p>
+
+</body>
+</html>
